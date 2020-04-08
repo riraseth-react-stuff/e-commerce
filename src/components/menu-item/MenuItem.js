@@ -21,3 +21,5 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
 };
 
 export default withRouter(MenuItem);
+
+// history and other params from react router are pushed only 1 level down from <Router/>, withRouter allows us to use them without prop drilling
