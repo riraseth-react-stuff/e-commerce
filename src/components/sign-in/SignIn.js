@@ -45,9 +45,7 @@ export default class SignIn extends Component {
             label="Password"
             required
           />
-          <CustomButton type="submit" value="Submit Form">
-            Sign In
-          </CustomButton>
+          <CustomButton type="submit">Sign In</CustomButton>
         </form>
       </div>
     );

@@ -3,9 +3,9 @@ import './CustomButton.scss';
 
 const CustomButton = ({ children, ...otherProps }) => {
   return (
-    <div className="custom-button" {...otherProps}>
+    <button className="custom-button" {...otherProps}>
       {children}
-    </div>
+    </button>
   );
 };
 
