@@ -19,7 +19,10 @@
     justify-content: flex-end;
 
     .option {
-      padding: 10px 15px;
+      margin: 10px 15px;
+    }
+    span:hover {
+      cursor: pointer;
     }
   }
 }
