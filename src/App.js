@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import HomePage from './pages/Homepage/HomePage';
-import ShopPage from './pages/shop/ShopPage';
+import ShopPage from './pages/Shop/ShopPage';
 import Header from './components/header/Header';
 import SignInAndSignOut from './pages/sign-in-and-sign-out/SignInAndSignOut';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
@@ -16,8 +16,21 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
-      createUserProfileDocument(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot((snapShot) => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          });
+        });
+      } else {
+        this.setState({ currentUser: null });
+      }
     });
   }
 
@@ -28,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header></Header>
+        <Header currentUser={this.state.currentUser}></Header>
         <Switch>
           <Route exact path="/">
             <HomePage></HomePage>
