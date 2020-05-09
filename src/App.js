@@ -9,6 +9,7 @@ import HomePage from './pages/Homepage/HomePage';
 import ShopPage from './pages/Shop/ShopPage';
 import Header from './components/header/Header';
 import SignInAndSignOut from './pages/sign-in-and-sign-out/SignInAndSignOut';
+import CheckoutPage from './pages/Checkout/CheckoutPage';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { selectCurrentUser } from './redux/user/user.selector';
 
@@ -47,6 +48,9 @@ class App extends Component {
           </Route>
           <Route path="/shop">
             <ShopPage></ShopPage>
+          </Route>
+          <Route exact path="/checkout">
+            <CheckoutPage></CheckoutPage>
           </Route>
           <Route exact path="/signin">
             {this.props.currentUser ? (
