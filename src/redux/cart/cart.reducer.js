@@ -11,6 +11,13 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, hidden: !state.hidden };
     case CartActionTypes.ADD_ITEM:
       return { ...state, cartItems: addItemToCart(state.cartItems, payload) };
+    case CartActionTypes.REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (cartItem) => cartItem.id !== payload.id
+        ),
+      };
     default:
       return state;
   }
