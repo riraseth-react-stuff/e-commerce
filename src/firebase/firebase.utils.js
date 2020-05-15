@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 const config = {
   apiKey: 'AIzaSyC9yOSMhDDphYIEPHZmC_e6aCFsa4CfZOI',
-  authDomain: 'e-commerce-17e2d.firebaseapp.com',
+  authDomain: 'crwn-clothes-riraseth.herokuapp.com ',
   databaseURL: 'https://e-commerce-17e2d.firebaseio.com',
   projectId: 'e-commerce-17e2d',
   storageBucket: 'e-commerce-17e2d.appspot.com',
