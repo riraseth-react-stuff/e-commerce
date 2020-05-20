@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const OptionContainerStyles = css`
-  margin: 10px 15px;
-  cursor: pointer;
-`;
+// const OptionContainerStyles = css`
+//   margin: 10px 15px;
+//   cursor: pointer;
+// `;
 
 export const StyledHeaderContainer = styled.div`
   height: 70px;
@@ -29,9 +29,10 @@ export const StyledOptionsContainer = styled.div`
 `;
 
 export const StyledOptionLink = styled(Link)`
-  ${OptionContainerStyles}
+  margin: 10px 15px;
+  cursor: pointer;
 `;
 
-export const StyledOptionDiv = styled.div`
-  ${OptionContainerStyles}
-`;
+// export const StyledOptionDiv = styled.div`
+//   ${OptionContainerStyles}
+// `;
