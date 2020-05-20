@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -7,37 +6,36 @@ import { createStructuredSelector } from 'reselect';
 import CartIcon from '../cart-icon/CartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
-
 import { selectCurrentUser } from '../../redux/user/user.selector';
-
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-import './Header.scss';
+
+import {
+  StyledHeaderContainer,
+  StyledLogoContainer,
+  StyledOptionLink,
+  StyledOptionsContainer,
+} from './Header.styles';
+
 const Header = ({ currentUser, hidden }) => {
   return (
-    <div className="header">
-      <Link to="/" className="logo-container">
+    <StyledHeaderContainer>
+      <StyledLogoContainer to="/">
         <Logo className="logo"></Logo>
-      </Link>
-      <div className="options">
-        <Link className="option" to="/shop">
-          SHOP
-        </Link>
-        <Link className="option" to="/contact">
-          CONTACT
-        </Link>
+      </StyledLogoContainer>
+      <StyledOptionsContainer>
+        <StyledOptionLink to="/shop">SHOP</StyledOptionLink>
+        <StyledOptionLink to="/contact">CONTACT</StyledOptionLink>
         {currentUser ? (
-          <span className="option" onClick={() => auth.signOut()}>
+          <StyledOptionLink as="div" onClick={() => auth.signOut()}>
             SIGN OUT
-          </span>
+          </StyledOptionLink>
         ) : (
-          <Link className="option" to="/signin">
-            SIGN IN
-          </Link>
+          <StyledOptionLink to="/signin">SIGN IN</StyledOptionLink>
         )}
         <CartIcon></CartIcon>
-      </div>
+      </StyledOptionsContainer>
       {hidden ? null : <CartDropdown></CartDropdown>}
-    </div>
+    </StyledHeaderContainer>
   );
 };
 const mapStateToProps = createStructuredSelector({
